@@ -23,6 +23,7 @@ int main (void) {
         for (y=1; y<4; y++)
             map[x][y] = '.';
 
+    cout << "請輸入 exit 來提前結束遊戲!" << endl; // 提示使用者可以輸入 exit 來結束遊戲
     while (end == 0 & count < 9) {
         while (end == 0, inputok == 0) {
             if ((count % 2) == 0) {
@@ -34,6 +35,10 @@ int main (void) {
             
             string input;
             cin >> input;
+            if (input == "exit") {
+                cout << "遊戲結束! (使用者終止)" << endl;
+                return 0; // 結束程式
+            }
             stringstream ss(input);
             char comma; // 檢查逗號
             ss >> a >> comma >> b; // 解析行列
