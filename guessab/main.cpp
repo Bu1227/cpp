@@ -7,6 +7,7 @@ main() {
     int guess[4];  // 儲存使用者輸入的數字
     int a = 0, b = 0; // 儲存幾A幾B
     bool used[10] = {false}; // 用來紀錄0~9是否被用過
+    bool invalidnum = false;
     srand(time(0)); // 初始化隨機數種子
 
     // 隨機生成 4 個不重複的數字
@@ -43,8 +44,13 @@ main() {
             guess[i] = input[i] - '0'; // 將字元轉換為整數
             if (guess[i] < 0 || guess[i] > 9) {
                 cout << "請輸入有效的數字（0~9）！" << endl;
-                continue;
+                invalidnum = true;
+                break;
             }
+        }
+        if (invalidnum) {
+            invalidnum = false; // 重置無效數字
+            continue; // 略過下面的內容讓使用者重新輸入
         }
 
         // 計算幾A幾B
